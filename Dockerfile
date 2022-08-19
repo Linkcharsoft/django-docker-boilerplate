@@ -12,4 +12,12 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . ./code
 
+RUN ["python", "manage.py", "migrate"]
+RUN ["python", "manage.py", "collectstatic", '--noinput']
+
+
+
+
+
+
 CMD [ "python", "./manage.py", "runserver" ]

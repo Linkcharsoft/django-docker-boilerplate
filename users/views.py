@@ -7,7 +7,7 @@ from rest_framework.permissions import IsAuthenticated
 from allauth.socialaccount.providers.facebook.views import FacebookOAuth2Adapter
 from allauth.socialaccount.providers.google.views import GoogleOAuth2Adapter
 from allauth.account.views import ConfirmEmailView
-from rest_auth.registration.views import SocialLoginView, RegisterView
+from dj_rest_auth.registration.views import SocialLoginView, RegisterView
 from dj_rest_auth.registration.serializers import VerifyEmailSerializer
 
 from django_base.settings import BASE_URL, EMAIL_HOST_USER, YOUR_APP_NAME

@@ -6,7 +6,7 @@ from rest_framework import status
 from allauth.socialaccount.providers.facebook.views import FacebookOAuth2Adapter
 from allauth.socialaccount.providers.google.views import GoogleOAuth2Adapter
 from allauth.account.views import ConfirmEmailView
-from rest_auth.registration.views import SocialLoginView
+from dj_rest_auth.registration.views import SocialLoginView
 from dj_rest_auth.registration.serializers import VerifyEmailSerializer
 from allauth.account.models import EmailAddress
 

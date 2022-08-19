@@ -10,14 +10,9 @@ WORKDIR /code
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . ./code
+COPY . .
 
-RUN ["python", "manage.py", "migrate"]
-RUN ["python", "manage.py", "collectstatic", '--noinput']
-
-
-
-
-
+RUN python manage.py migrate
+RUN python manage.py collectstatic --noinput
 
 CMD [ "python", "./manage.py", "runserver" ]

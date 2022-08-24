@@ -19,14 +19,29 @@ services:
       - static_volume:/code/static
       - media_volume:/code/media
     ports:
-      - "80:80"
+      - "90:80"
     depends_on:
       - web
     networks:
       - django-network
+  redis:
+    image: redis/redis-stack
+    restart: always
+    volumes:
+      - ./data/redis:/data
+    ports:
+      - "6379:6379"
+    environment:
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+    depends_on:
+      - web
+    networks:
+      - django-network
+
 networks:
   django-network:
     name: django-network
 volumes:
   media_volume:
   static_volume:
+

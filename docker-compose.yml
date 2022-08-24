@@ -12,7 +12,10 @@ services:
 
   web:
     build: .
-    command: python manage.py runserver 0.0.0.0:8000
+    command: bash -c "
+      python manage.py wait_for_db
+      && python manage.py migrate
+      && python manage.py runserver 0.0.0.0:8000"
     ports:
       - "8000:8000"
     environment:
@@ -23,4 +26,18 @@ services:
       - .:/code
     depends_on:
       - db
+
+  redis:
+    image: redis/redis-stack
+    restart: always
+    volumes:
+      - ./data/redis:/data
+    ports:
+      - "6379:6379"
+    environment:
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+    depends_on:
+      - web
+
+
 

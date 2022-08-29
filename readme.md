@@ -15,7 +15,7 @@ git clone https://github.com/Linkcharsoft/async-django-docker-boilerplate
 cd django-docker-boilerplate
 ```
 
-- Create and complete a .env file with your app info (there is already a .env.example file).
+Create and complete a .env file with your app info (there is already a .env.example file).
 In order to complete the "SECRET_KEY" field, you can use the default on .env.example and then run the following command and copy the value on the .env file:
 ```bash
 python manage.py get_secret_key
@@ -38,7 +38,7 @@ sudo docker-compose -f docker-compose-production.yml up -d
 
 - On django admin site, on "sites" section, change "example.com" to your domain name (something like "google.com").
 
-- Config Facebook/Google login on their respective sites and django admin. Here there is a [Tutorial](https://djangokatya.com/2020/08/12/another-django-all-auth-tutorial/):
+- Config Facebook/Google login on their respective sites and django admin. Here there is a [Tutorial](https://djangokatya.com/2020/08/12/another-django-all-auth-tutorial/)
  
 
 

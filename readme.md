@@ -12,7 +12,7 @@ Use the git clone command:
 
 ```bash
 git clone https://github.com/Linkcharsoft/async-django-docker-boilerplate
-cd Django_base
+cd django-docker-boilerplate
 ```
 
 Then for development:

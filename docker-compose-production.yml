@@ -38,8 +38,10 @@ services:
       - web
     networks:
       - django-network
+
 networks:
   django-network:
 volumes:
   media_volume:
   static_volume:
+

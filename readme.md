@@ -16,7 +16,7 @@ cd django-docker-boilerplate
 ```
 
 Create and complete a .env file with your app info (there is already a .env.example file).
-In order to complete the "SECRET_KEY" field, you can use the default on .env.example and then run the following command and copy the value on the .env file:
+In order to complete the "SECRET_KEY" field, you can use the default on .env.example but then you must run the following command and copy the given value on the .env file:
 ```bash
 python manage.py get_secret_key
 ```

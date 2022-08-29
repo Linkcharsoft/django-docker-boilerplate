@@ -15,24 +15,26 @@ git clone https://github.com/Linkcharsoft/async-django-docker-boilerplate
 cd django-docker-boilerplate
 ```
 
-Then for development:
+- Create and complete a .env file with your app info (there is already a .env.example file).
+In order to complete the "SECRET_KEY" field, you can use the default on .env.example and then run the following command and copy the value on the .env file:
+```bash
+python manage.py get_secret_key
+```
+
+
+Then for development run:
 ```bash
 sudo docker-compose build
 sudo docker-compose up -d
 ```
 
-Or for production:
+Or for production run:
 ```bash
 sudo docker compose -f docker-compose-production.yml build
 sudo docker-compose -f docker-compose-production.yml up -d
 ```
 
 ### Other configurations
-- Create and complete a .env file with your app info (there is already a .env.example file).
-In order to complete the "SECRET_KEY" field, you can use the default on .env.example and then run the following command and copy the value on the .env file:
-```bash
-python manage.py get_secret_key
-```
 
 - On django admin site, on "sites" section, change "example.com" to your domain name (something like "google.com").
 

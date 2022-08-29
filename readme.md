@@ -1,26 +1,35 @@
 # General information
 
-Pre-config Django with django-rest-framework, user-profile model and autentication process (Login, Signup, Password reset, password, recovery...)
- 
+Pre-config Django with django-rest-framework, corsheaders, user-profile model and autentication process (Login, Signup, Password reset, password, recovery...).
+
+And it has a pre-configured [Postgresql](https://www.postgresql.org/) for develoment too.
+
+There is a docker-compose for production, an another for development.
+
 ## Installation
 
 Use the git clone command:
 
 ```bash
-git clone https://github.com/quiromaniaco/django-boilerplate-linkchar.git
+git clone https://github.com/Linkcharsoft/async-django-docker-boilerplate
 cd Django_base
 ```
 
-It is highly recommended to use a [VirtualEnv](https://towardsdatascience.com/virtual-environments-104c62d48c54):
-
+Then for development:
 ```bash
-pip install -r requirements.txt
-python manage.py migrate
+sudo docker-compose build
+sudo docker-compose up -d
+```
+
+Or for production:
+```bash
+sudo docker compose -f docker-compose-production.yml build
+sudo docker-compose -f docker-compose-production.yml up -d
 ```
 
 ### Other configurations
 - Create and complete a .env file with your app info (there is already a .env.example file).
-In order to complete the "SECRET_KEY" field, you can run the following command and copy the value on the .env file:
+In order to complete the "SECRET_KEY" field, you can use the default on .env.example and then run the following command and copy the value on the .env file:
 ```bash
 python manage.py get_secret_key
 ```
@@ -54,8 +63,9 @@ python manage.py get_secret_key
 ## Contributing
 - [Juan Ignacio Borrelli](https://www.linkedin.com/in/juan-ignacio-borrelli/)
 - [Luca Cittá Guiordano](https://www.linkedin.com/in/lucacittagiordano/)
+- [Matias Girardi](https://www.linkedin.com/in/matiasgirardi)
 
-Both working on [Linkchar Software Development](https://linkchar.com/)
+All working on [Linkchar Software Development](https://linkchar.com/)
 
 
 ## License

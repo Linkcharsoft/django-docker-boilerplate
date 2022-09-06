@@ -31,7 +31,6 @@ if IS_SERVER:
             time.sleep(2.5)
     
 else:   
-    print("toy")
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'django_base.settings')
 
     application = get_wsgi_application()

@@ -29,8 +29,8 @@ from users.utils import get_random_string
 def create_profile(sender, instance, **kwargs):
     if kwargs['created']:
         User_profile.objects.create(user=instance)
-    if instance.is_staff:
-        EmailAddress.objects.create(user=instance, email=instance.email, verified=True, primary=True)
+        if instance.is_staff:
+            EmailAddress.objects.create(user=instance, email=instance.email, verified=True, primary=True)
 
 
 class FacebookLogin(SocialLoginView):

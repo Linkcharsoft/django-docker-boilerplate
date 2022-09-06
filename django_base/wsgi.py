@@ -6,7 +6,7 @@ It exposes the WSGI callable as a module-level variable named ``application``.
 For more information on this file, see
 https://docs.djangoproject.com/en/4.0/howto/deployment/wsgi/
 """
-from settings import IS_SERVER
+from django_base.settings import IS_SERVER
 import os
 from django.core.wsgi import get_wsgi_application
 
@@ -31,6 +31,7 @@ if IS_SERVER:
             time.sleep(2.5)
     
 else:   
+    print("toy")
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'django_base.settings')
 
     application = get_wsgi_application()

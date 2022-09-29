@@ -6,11 +6,18 @@ It exposes the WSGI callable as a module-level variable named ``application``.
 For more information on this file, see
 https://docs.djangoproject.com/en/4.0/howto/deployment/wsgi/
 """
-from django_base.settings import IS_SERVER
+
 import os
+import environ
+from pathlib import Path
 from django.core.wsgi import get_wsgi_application
 
-if IS_SERVER:
+BASE_DIR = Path(__file__).resolve().parent.parent
+env = environ.Env()
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+
+
+if env('IS_SERVER', default=True):
     import time
     import traceback
     import signal

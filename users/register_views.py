@@ -7,6 +7,7 @@ from allauth.socialaccount.providers.facebook.views import FacebookOAuth2Adapter
 from allauth.socialaccount.providers.google.views import GoogleOAuth2Adapter
 from allauth.account.views import ConfirmEmailView
 from dj_rest_auth.registration.views import SocialLoginView
+from dj_rest_auth.views import PasswordChangeView
 from dj_rest_auth.registration.serializers import VerifyEmailSerializer
 from allauth.account.models import EmailAddress
 
@@ -137,3 +138,20 @@ class Password_recovery_confirm(APIView):
                 return Response({"error": "This user has no token request"}, status=status.HTTP_400_BAD_REQUEST)
         except Exception as e:
             return Response({"error": "Something went wrong.", "e":str(e)}, status= status.HTTP_400_BAD_REQUEST)
+
+
+class PasswordChangeViewModify(PasswordChangeView):
+    def post(self, request, *args, **kwargs):
+        if not 'old_password' in request.data:
+            return Response({'error': 'old_password is required'}, status=status.HTTP_400_BAD_REQUEST)
+        old_password = request.data['old_password']
+        if not request.user.check_password(old_password):
+            return Response({"error": "Old password is incorrect"}, status=status.HTTP_400_BAD_REQUEST)
+        if old_password == request.data['new_password1']:
+            return Response({"error": "New password must be different from old password"}, status=status.HTTP_400_BAD_REQUEST)
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        request.user.is_register_completed = True
+        request.user.save()
+        return Response({'detail': _('New password has been saved.')})

@@ -23,13 +23,13 @@ from datetime import timedelta
 from django.utils import timezone
 
 
-from users.models import User_profile,User, TokenRecovery
+from users.models import UserProfile, User, TokenRecovery
 from users.utils import get_random_string
 
 @receiver(post_save, sender=User)
 def create_profile(sender, instance, **kwargs):
     if kwargs['created']:
-        User_profile.objects.create(user=instance)
+        UserProfile.objects.create(user=instance)
         if instance.is_staff:
             EmailAddress.objects.create(user=instance, email=instance.email, verified=True, primary=True)
 

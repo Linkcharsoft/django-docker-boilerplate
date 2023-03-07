@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from users.models import User_profile, User
+from users.models import UserProfile, User
 
 class User_serializer(serializers.ModelSerializer):
     class Meta:
@@ -9,6 +9,6 @@ class User_serializer(serializers.ModelSerializer):
 
 class User_profile_serializer(serializers.ModelSerializer):
     class Meta:
-        model = User_profile
+        model = UserProfile
         fields = '__all__'
         read_only_fields = ('user',)

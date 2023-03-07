@@ -22,7 +22,7 @@ from datetime import timedelta
 from django.utils import timezone
 
 
-from users.models import User_profile,User, TokenRecovery
+from users.models import UserProfile, User, TokenRecovery
 from users.utils import get_random_string
 from users.serializers import User_profile_serializer, User_serializer
 

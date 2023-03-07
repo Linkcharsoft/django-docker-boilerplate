@@ -57,7 +57,7 @@ class EmailVerification(APIView, ConfirmEmailView):
 
 
 
-class Password_recovery_email_send(APIView):
+class PasswordRecoveryEmailSend(APIView):
     def post(self, request):
         try:
             recovery_token = get_random_string(6)
@@ -88,7 +88,7 @@ class Password_recovery_email_send(APIView):
         except Exception as e:
             return Response({"error": "Something went wrong.", "e":str(e)}, status= status.HTTP_400_BAD_REQUEST)
 
-class Check_token(APIView):
+class CheckToken(APIView):
     def post(self, request):
         try:
             token = request.data['token']
@@ -108,7 +108,7 @@ class Check_token(APIView):
         except Exception as e:
             return Response({"error": "Something went wrong.", "e":str(e)}, status= status.HTTP_400_BAD_REQUEST)
 
-class Password_recovery_confirm(APIView):
+class PasswordRecoveryConfirm(APIView):
     def post(self, request):
         try:
             token = request.data['token']

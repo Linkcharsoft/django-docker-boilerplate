@@ -24,27 +24,27 @@ from django.utils import timezone
 
 from users.models import UserProfile, User, TokenRecovery
 from users.utils import get_random_string
-from users.serializers import User_profile_serializer, User_serializer
+from users.serializers import UserProfileSerializer, UserSerializer
 
 
 # Create your views here.
 
 
 
-class User_profile_me(APIView):
+class UserProfileMe(APIView):
     def get(self, request):
         if request.user.is_authenticated:
-            profile_serializer = User_profile_serializer(request.user.user_profile)
-            user_serializer = User_serializer(request.user) 
+            profile_serializer = UserProfileSerializer(request.user.user_profile)
+            user_serializer = UserSerializer(request.user) 
             return Response({'user':user_serializer.data, 'user_profile':profile_serializer.data})
         else:
             return Response({'data': 'User not authenticated'}, status=status.HTTP_401_UNAUTHORIZED)
     
     def patch(self, request):
         if request.user.is_authenticated:
-            user_serializer = User_serializer(data=request.data, instance=request.user, partial=True)
+            user_serializer = UserSerializer(data=request.data, instance=request.user, partial=True)
             if user_serializer.is_valid():
-                profile_serializer = User_profile_serializer(data=request.data, instance=request.user.user_profile, partial=True)
+                profile_serializer = UserProfileSerializer(data=request.data, instance=request.user.user_profile, partial=True)
                 if profile_serializer.is_valid():
                     user_serializer.save()
                     profile_serializer.save()

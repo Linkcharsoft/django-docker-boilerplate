@@ -1,34 +1,10 @@
-from django.shortcuts import render
+
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
-
-from allauth.socialaccount.providers.facebook.views import FacebookOAuth2Adapter
-from allauth.socialaccount.providers.google.views import GoogleOAuth2Adapter
-from allauth.account.views import ConfirmEmailView
-from dj_rest_auth.registration.views import SocialLoginView, RegisterView
-from dj_rest_auth.registration.serializers import VerifyEmailSerializer
-
-from django_base.settings import BASE_URL, EMAIL_HOST_USER, YOUR_APP_NAME
 from django.utils.translation import gettext_lazy as _
-from django.db.models.signals import post_save
-from django.dispatch import receiver
-from django.shortcuts import get_object_or_404
-from django.core.mail import send_mail 
-from django.core.exceptions import ValidationError
-from django.contrib.auth.password_validation import validate_password
-from datetime import timedelta
-from django.utils import timezone
-
-
-from users.models import UserProfile, User, TokenRecovery
-from users.utils import get_random_string
 from users.serializers import UserProfileSerializer, UserSerializer
-
-
-# Create your views here.
-
 
 
 class UserProfileMe(APIView):
